@@ -14,6 +14,15 @@ public class User {
 
     private String password;
     private  String name;
+    private Double balance;
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
 
     public User() {
     }
@@ -61,11 +70,12 @@ public class User {
         this.name = name;
     }
 
-    public User(Long id, String username, String password, String name) {
+    public User(Long id, String username, String password, String name,Double balance) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
+        this.balance=balance;
     }
 
 

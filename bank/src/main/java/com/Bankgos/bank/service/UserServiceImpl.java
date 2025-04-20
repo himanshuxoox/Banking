@@ -16,4 +16,23 @@ public class UserServiceImpl implements UserService{
         return userDao.findByUsername(username).filter(user -> user.getPassword().equals(password)).orElseThrow(()->
                 new RuntimeException("Invalid username or password"));
     }
+
+    @Override
+    public User register(User user) {
+
+        if(userDao.findByUsername(user.getUsername()).isPresent())
+        {
+
+            throw new RuntimeException("Username alread exists");
+        }
+        return userDao.save(user);
+    }
+
+    @Override
+    public double getBalance(Long userId) {
+       User user=userDao.findById(userId).orElseThrow(()->new RuntimeException("user not found for which you are tyring to fech balance"));
+
+
+        return user.getBalance();
+    }
 }
