@@ -9,6 +9,8 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+
 @RestController
 @RequestMapping("/api/payess")
 @CrossOrigin("*")
@@ -28,6 +30,22 @@ public class PayeeController {
             return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 
+    }
+
+    @GetMapping("/{userId}/")
+
+    public ResponseEntity<?> getPayee (@PathVariable Long userId)
+    {
+        try
+        {
+
+
+            return ResponseEntity.ok(payeeService.getPayees(userId));
+
+        }
+        catch (Exception e){
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
 

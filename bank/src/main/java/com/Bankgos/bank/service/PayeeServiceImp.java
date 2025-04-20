@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Bankgos.bank.model.User;
 
+import java.util.List;
+
 @Service
 public class PayeeServiceImp implements PayeeService {
 
@@ -22,5 +24,14 @@ public class PayeeServiceImp implements PayeeService {
 
         payee.setUser(user);
         return payeeDao.save(payee) ;
+    }
+
+    /**
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Payee> getPayees(Long userId) {
+        return payeeDao.findByUserId(userId);
     }
 }
